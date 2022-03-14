@@ -28,3 +28,8 @@ symfony flex : permet d'ajouter et de gérer les dépendaces via la commande :
 composer require [nom du paquet]
 composer remove [nom du paquet]
 ```
+
+Lister les routes :
+```shell
+php bin/console debug:router
+```
