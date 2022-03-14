@@ -33,3 +33,13 @@ Lister les routes :
 ```shell
 php bin/console debug:router
 ```
+
+
+Les tags utiles en TWIG :
+```twig
+block
+include
+extends
+if
+for
+```

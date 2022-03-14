@@ -8,7 +8,11 @@
 </head>
 <body>
         <h1>Hello World !</h1>
-        <a href="{{ path('app_chance_nombre') }}">Nombre aléatoire</a>
+        {% if nombre is defined %}
+            <a href="{{ path('app_chance_nombre', {min: nombre}) }}">Nombre aléatoire</a>
+        {% else %}
+            <a href="{{ path('app_chance_nombre') }}">Nombre aléatoire</a>
+        {% endif %}
         <a href="{{ path('app_chance_jour') }}">Jour aléatoire</a>
 </body>
 </html>

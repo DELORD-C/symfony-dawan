@@ -16,7 +16,8 @@ class IndexController extends AbstractController
         return $this->render(
             'index.html.twig', //1er paramètre :chemin de notre template
             [
-                'titre' => 'Accueil'
+                'titre' => 'Accueil',
+                'nombre' => 50
             ] //2e paramètre (optionnel) : tableau associatif de variables que l'on souhaite passer au template
         );
     }
