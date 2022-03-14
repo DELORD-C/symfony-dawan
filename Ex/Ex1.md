@@ -5,3 +5,5 @@
 2. Associer cette méthode à la route /chance/nombre
 
 3. Créer une page qui affiche un jour aléatoire de la semaine (Lundi, Mardi, etc...), créer la route et la méthode.
+
+4. Créer une page d'accueil (/) qui affiche un message de bienvenue
