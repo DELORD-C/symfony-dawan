@@ -14,4 +14,21 @@ class ChanceController
           "<html lang='fr'><body>Nombre chance : $nombre</body></html>"
         );
     }
+
+    public function jour() : Response
+    {
+        $jours = [
+            'Lundi',
+            'Mardi',
+            'Mercredi',
+            'Jeudi',
+            'Vendredi',
+            'Samedi',
+            'Dimanche'
+        ];
+
+        return new Response(
+            "<html lang='fr'><body>Jour de chance : " . $jours[array_rand($jours)] . "</body></html>"
+        );
+    }
 }

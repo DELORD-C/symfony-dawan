@@ -6,3 +6,7 @@
 app_chance_nombre:
   path: /chance/nombre
   controller: App\Controller\ChanceController::nombre
+
+app_chance_jour:
+  path: /chance/jour
+  controller: App\Controller\ChanceController::jour
