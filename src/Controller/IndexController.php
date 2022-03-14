@@ -2,17 +2,22 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-class IndexController
+
+class IndexController extends AbstractController
 {
     /**
      * @Route("/")
      */
     public function home() : Response
     {
-        return new Response(
-            "<html lang='en'><body>Hello World !</body></html>"
+        return $this->render(
+            'index.html.twig', //1er paramètre :chemin de notre template
+            [
+                'titre' => 'Accueil'
+            ] //2e paramètre (optionnel) : tableau associatif de variables que l'on souhaite passer au template
         );
     }
 }
