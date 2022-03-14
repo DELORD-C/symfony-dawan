@@ -16,7 +16,11 @@
         </head>
         <body>
 {% endblock %}
-{% block content %}{% endblock %}
+{% block content %}
+    {% if content is defined %}
+        {{ content }}
+    {% endif %}
+{% endblock %}
 {% block footer %}
         {{ encore_entry_script_tags('app') }}
         </body>

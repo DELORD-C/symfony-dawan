@@ -15,7 +15,7 @@ h1 {
 }
 ```
 
-6. Inclure sur votre page d'accueil afin de mettre le titre h1 en rouge
+6. L'inclure sur votre page d'accueil afin de mettre le titre h1 en rouge
 
 7. Factoriser vos template twig grâce aux extends et includes.
 
