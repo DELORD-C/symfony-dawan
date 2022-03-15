@@ -5,3 +5,7 @@ h1 {
 h2 {
     color: black;
 }
+
+.active {
+    font-weight: 700;
+}

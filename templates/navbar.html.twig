@@ -1,0 +1,11 @@
+<ul class="navbar">
+    <li {% if app.request.pathInfo == path('app_index_home') %} class="active" {% endif %}>
+        <a href="{{ path('app_index_home') }}">Home</a>
+    </li>
+    <li {% if app.request.pathInfo == path('app_chance_jour') %} class="active" {% endif %}>
+        <a href="{{ path('app_chance_jour') }}">Jour de chance</a>
+    </li>
+    <li {% if app.request.pathInfo == path('app_chance_nombre') %} class="active" {% endif %}>
+        <a href="{{ path('app_chance_nombre') }}">Nombre chance</a>
+    </li>
+</ul>
