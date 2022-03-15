@@ -5,10 +5,11 @@
     <ul>
     {% for auteur in auteurs %}
         <li>
-            {{ auteur.name }}
+            <p>{{ auteur.name }}</p>
             <a href="{{ path('app_author_edit', {author: auteur.id}) }}">Editer</a>
             <a href="{{ path('app_author_delete', {author: auteur.id}) }}">Supprimer</a>
         </li>
     {% endfor %}
     </ul>
+    <a href="{{ path('app_author_add') }}">Ajouter un auteur</a>
 {% endblock %}

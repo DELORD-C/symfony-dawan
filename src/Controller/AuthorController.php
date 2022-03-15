@@ -31,39 +31,56 @@ class AuthorController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) { //on vérifie que le formulaire a été soumis et est valide
             $newAuthor = $form->getData(); //on stocke les données dans une variable
             $em->persist($newAuthor); //on utilise la fonction persist (preparation des requêtes) de notre entity manager (ORM)
-            $em->flush(); //on sauvegarde les changements et on vide la cache
+            $em->flush(); //on utilise flush pour appliquer les modifications et vider le cache
             return $this->redirect($request->getUri()); // on rafraichit la page pour vider le formulaire (front)
         }
 
-        return $this->render('Author/add.html.twig', [
-            'form' => $form->createView()
+        return $this->render('Author/add.html.twig', [ //on utilise render pour renvoyer un template twig
+            'form' => $form->createView() //on passe en paramètre une vue du formulaire
         ]);
     }
 
     /**
      * @Route("author/list")
      */
-    public function list(AuthorRepository $rep) :Response
+    public function list(AuthorRepository $rep) :Response //ici on récupère notre AuthorRepository en paramètre automatique
     {
-        $auteurs = $rep->findAll();
+        $auteurs = $rep->findAll(); //on utilise findAll pour récupérer tous les auteurs
         return $this->render('Author/list.html.twig', [
-            'auteurs' => $auteurs
+            'auteurs' => $auteurs //on passe nos auteurs en paramètre
         ]);
     }
 
     /**
      * @Route("author/delete/{author}")
      */
-    public function delete (Author $author)
+    public function delete (Author $author, AuthorRepository $rep) :Response //On récupère notre auteur grâce à la conversion automatique des paramètres
     {
-
+        $rep->remove($author); //on utilise remove pour supprimer un objet
+        return $this->redirectToRoute('app_author_list'); //on redirige vers la route de notre liste
     }
 
     /**
      * @Route("author/edit/{author}")
      */
-    public function edit ()
+    public function edit (Author $author, EntityManagerInterface $em, Request $request) :Response
     {
+        $form = $this->createFormBuilder($author)
+        ->add('name', TextType::class)
+        ->add('save', SubmitType::class, ['label' => 'Modifier'])
+        ->getForm();
 
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $newAuthor = $form->getData();
+            $em->persist($newAuthor);
+            $em->flush();
+            return $this->redirect($request->getUri());
+        }
+
+        return $this->render('Author/edit.html.twig', [
+            'form' => $form->createView()
+        ]);
     }
 }
