@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AuthorController extends AbstractController
 {
     /**
-     * @Route('author/add')
+     * @Route('Author/add')
      */
     public function add () :Response
     {
@@ -21,7 +21,7 @@ class AuthorController extends AbstractController
             ->add('name', TextType::class)
             ->getForm();
 
-        return $this->render('author/add.html.twig', [
+        return $this->render('Author/add.html.twig', [
             'form' => $form->createView()
         ]);
     }

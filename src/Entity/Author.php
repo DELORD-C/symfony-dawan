@@ -25,7 +25,7 @@ class Author
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Post::class, mappedBy="author")
+     * @ORM\OneToMany(targetEntity=Post::class, mappedBy="Author")
      */
     private $posts;
 
