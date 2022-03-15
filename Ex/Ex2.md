@@ -9,3 +9,18 @@
    2. add (page formulaire pour ajouter un auteur)
    3. delete (pas besoin de template ici, juste une méthode qui supprime l'auteur passé en paramètre puis redirige vers la liste)
    4. edit (page formulaire pour modifier un auteur)
+
+4. Créer un CRUD pour les posts. Il faut qu'à la création ou à l'édition d'un post, on puisse choisir dans une liste (select) un auteur existant.
+
+5. Mettre à jour la navbar pour avoir (les sous menu doivent être en dropdown):
+```shell
+Home
+Jour de chance
+Nombre chance
+Auteurs
+  Liste
+  Créer
+Posts
+  Liste
+  Créer
+```
