@@ -12,7 +12,9 @@
 
 4. Créer un CRUD pour les posts. Il faut qu'à la création ou à l'édition d'un post, on puisse choisir dans une liste (select) un auteur existant.
 
-5. Mettre à jour la navbar pour avoir (les sous menu doivent être en dropdown):
+5. Lier bootstrap css et js sur TOUTES les pages du projet (indice : regardez la doc)
+
+6. Mettre à jour la navbar pour avoir (les sous menu doivent être en dropdown) :
 ```shell
 Home
 Jour de chance
