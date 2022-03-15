@@ -86,3 +86,23 @@ JS :
 ---
 
 ## Doctrine
+
+### Créer la database
+```shell
+php bin/console doctrine:database:create
+```
+
+### Créer une entité
+```shell
+php bin/console make:entity
+```
+
+### Préparer une migration
+```shell
+php bin/console make:migration
+```
+
+### Effectuer une migration
+```shell
+php bin/console doctrine:migrations:migrate
+```
