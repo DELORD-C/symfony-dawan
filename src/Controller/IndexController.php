@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\AuthorRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,4 +22,6 @@ class IndexController extends AbstractController
             ] //2e paramètre (optionnel) : tableau associatif de variables que l'on souhaite passer au template
         );
     }
+
+
 }

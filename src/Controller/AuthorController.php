@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Author;
+use App\Repository\AuthorRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -37,5 +38,32 @@ class AuthorController extends AbstractController
         return $this->render('Author/add.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("author/list")
+     */
+    public function list(AuthorRepository $rep) :Response
+    {
+        $auteurs = $rep->findAll();
+        return $this->render('Author/list.html.twig', [
+            'auteurs' => $auteurs
+        ]);
+    }
+
+    /**
+     * @Route("author/delete/{author}")
+     */
+    public function delete (Author $author)
+    {
+
+    }
+
+    /**
+     * @Route("author/edit/{author}")
+     */
+    public function edit ()
+    {
+
     }
 }
