@@ -22,7 +22,8 @@
     {% endif %}
 {% endblock %}
 {% block footer %}
-        {{ encore_entry_script_tags('app') }}
+    {{ encore_entry_script_tags('app') }}
+    {% include 'link.html.twig' %}
         </body>
 </html>
 {% endblock %}
