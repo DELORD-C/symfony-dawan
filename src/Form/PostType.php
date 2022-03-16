@@ -19,6 +19,6 @@ class PostType extends AbstractType
                 'class' => Author::class,
                 'choice_label' => 'name'
             ])
-            ->add('save', SubmitType::class, ['label' => 'Valider']);
+            ->add('save', SubmitType::class, ['label' => 'Modifier']);
     }
 }
