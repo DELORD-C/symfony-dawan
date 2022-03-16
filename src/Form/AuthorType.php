@@ -13,6 +13,6 @@ class AuthorType extends AbstractType
     {
         $builder
             ->add('name', TextareaType::class)
-            ->add('save', SubmitType::class, ['label' => 'Valider']);
+            ->add('save', SubmitType::class, ['label' => 'Modifier']);
     }
 }

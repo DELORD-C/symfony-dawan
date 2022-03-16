@@ -2,6 +2,9 @@
 
 {% block content %}
     <h1>Ajouter un auteur</h1>
-    {{ form(form) }}
+    {{ form_start(form) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form.save, { 'label': 'Créer' }) }}
+    {{ form_end(form) }}
     <a href="{{ path('app_author_list') }}">Retour</a>
 {% endblock %}
