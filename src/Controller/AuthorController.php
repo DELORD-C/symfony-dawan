@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Author;
+use App\Form\AuthorType;
 use App\Repository\AuthorRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,22 +22,19 @@ class AuthorController extends AbstractController
     {
         $author = new Author(); //On créé une entité auteur vide
 
-        $form = $this->createFormBuilder($author) //on créé un objet formbuilder, en lui passant en paramètre notre objet auteur vide, ainsi qu'un tableau contenant nos champs
-            ->add('name', TextType::class) //on ajoute le champ name
-            ->add('save', SubmitType::class, ['label' => 'Créer']) //on ajoute le bouton submit
-            ->getForm(); //on utilise la fonction get form pour transformer l'objet formbuilder en objet form
+        $form = $this->createForm(AuthorType::class, $author); //on utilise la fonction createForm pour récupérer notre formulaire depuis notre objet AuthorType
 
         $form->handleRequest($request); //on récupère la requête (paramètres post) et on stocke dans notre formulaire
 
         if ($form->isSubmitted() && $form->isValid()) { //on vérifie que le formulaire a été soumis et est valide
             $newAuthor = $form->getData(); //on stocke les données dans une variable
             $em->persist($newAuthor); //on utilise la fonction persist (preparation des requêtes) de notre entity manager (ORM)
-            $em->flush(); //on utilise flush pour appliquer les modifications et vider le cache
+            $em->flush(); //on utilise flush() pour appliquer les modifications et vider le cache
             return $this->redirect($request->getUri()); // on rafraichit la page pour vider le formulaire (front)
         }
 
-        return $this->render('Author/add.html.twig', [ //on utilise render pour renvoyer un template twig
-            'form' => $form->createView() //on passe en paramètre une vue du formulaire
+        return $this->renderForm('Author/add.html.twig', [ //on utilise render pour renvoyer un template twig
+            'form' => $form //on passe en paramètre une vue du formulaire
         ]);
     }
 
@@ -67,10 +65,7 @@ class AuthorController extends AbstractController
      */
     public function edit (Author $author, EntityManagerInterface $em, Request $request) :Response
     {
-        $form = $this->createFormBuilder($author)
-        ->add('name', TextType::class)
-        ->add('save', SubmitType::class, ['label' => 'Modifier'])
-        ->getForm();
+        $form = $this->createForm(AuthorType::class, $author);
 
         $form->handleRequest($request);
 
@@ -81,8 +76,8 @@ class AuthorController extends AbstractController
             return $this->redirect($request->getUri());
         }
 
-        return $this->render('Author/edit.html.twig', [
-            'form' => $form->createView()
+        return $this->renderForm('Author/edit.html.twig', [
+            'form' => $form
         ]);
     }
 }

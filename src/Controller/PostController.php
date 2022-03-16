@@ -2,15 +2,10 @@
 
 namespace App\Controller;
 
-use App\Entity\Author;
 use App\Entity\Post;
-use App\Repository\AuthorRepository;
+use App\Form\PostType;
 use App\Repository\PostRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,14 +20,7 @@ class PostController extends AbstractController
     {
         $post = new Post();
 
-        $form = $this->createFormBuilder($post)
-        ->add('content', TextareaType::class)
-        ->add('author', EntityType::class, [
-            'class' => Author::class,
-            'choice_label' => 'name'
-        ])
-        ->add('save', SubmitType::class, ['label' => 'Créer'])
-        ->getForm();
+        $form = $this->createForm(PostType::class, $post);
 
         $form->handleRequest($request);
 
@@ -43,8 +31,8 @@ class PostController extends AbstractController
             return $this->redirect($request->getUri());
         }
 
-        return $this->render('Post/add.html.twig', [
-            'form' => $form->createView()
+        return $this->renderForm('Post/add.html.twig', [
+            'form' => $form
         ]);
     }
 
@@ -73,14 +61,7 @@ class PostController extends AbstractController
      */
     public function edit (Post $post, EntityManagerInterface $em, Request $request) :Response
     {
-        $form = $this->createFormBuilder($post)
-            ->add('content', TextareaType::class)
-            ->add('author', EntityType::class, [
-                'class' => Author::class,
-                'choice_label' => 'name'
-            ])
-            ->add('save', SubmitType::class, ['label' => 'Modifier'])
-            ->getForm();
+        $form = $this->createForm(PostType::class, $post);
 
         $form->handleRequest($request);
 
@@ -91,8 +72,8 @@ class PostController extends AbstractController
             return $this->redirect($request->getUri());
         }
 
-        return $this->render('Post/edit.html.twig', [
-            'form' => $form->createView()
+        return $this->renderForm('Post/edit.html.twig', [
+            'form' => $form
         ]);
     }
 }
