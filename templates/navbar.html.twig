@@ -1,11 +1,37 @@
-<ul class="navbar">
-    <li {% if app.request.pathInfo == path('app_index_home') %} class="active" {% endif %}>
-        <a href="{{ path('app_index_home') }}">Home</a>
-    </li>
-    <li {% if app.request.pathInfo == path('app_chance_jour') %} class="active" {% endif %}>
-        <a href="{{ path('app_chance_jour') }}">Jour de chance</a>
-    </li>
-    <li {% if app.request.pathInfo == path('app_chance_nombre') %} class="active" {% endif %}>
-        <a href="{{ path('app_chance_nombre') }}">Nombre chance</a>
-    </li>
-</ul>
+<nav class="container-fluid navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{{ path('app_index_home') }}">Symfony</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-expanded="false" aria-controls="navbarNavDropdown">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item {% if app.request.pathInfo == path('app_index_home') %} active {% endif %}">
+                <a class="nav-link" href="{{ path('app_index_home') }}">Home</a>
+            </li>
+            <li class="nav-item {% if app.request.pathInfo == path('app_chance_jour') %} active {% endif %}">
+                <a class="nav-link" href="{{ path('app_chance_jour') }}">Jour de chance</a>
+            </li>
+            <li class="nav-item {% if app.request.pathInfo == path('app_chance_nombre') %} active {% endif %}">
+                <a class="nav-link" href="{{ path('app_chance_nombre') }}">Nombre chance</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdownAuthors" data-bs-toggle="dropdown" aria-expanded="false">
+                    Auteurs
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownAuthors">
+                    <a class="dropdown-item {% if app.request.pathInfo == path('app_author_list') %} active {% endif %}" href="{{ path('app_author_list') }}">Liste</a>
+                    <a class="dropdown-item {% if app.request.pathInfo == path('app_author_add') %} active {% endif %}" href="{{ path('app_author_add') }}">Ajouter un auteur</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdownPosts" data-bs-toggle="dropdown" aria-expanded="false">
+                    Posts
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownPosts">
+                    <a class="dropdown-item {% if app.request.pathInfo == path('app_post_list') %} active {% endif %}" href="{{ path('app_post_list') }}">Liste</a>
+                    <a class="dropdown-item {% if app.request.pathInfo == path('app_post_add') %} active {% endif %}" href="{{ path('app_post_add') }}">Ajouter un post</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>

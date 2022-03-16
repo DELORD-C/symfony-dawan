@@ -54,9 +54,11 @@ class AuthorController extends AbstractController
     /**
      * @Route("author/delete/{author}")
      */
-    public function delete (Author $author, AuthorRepository $rep) :Response //On récupère notre auteur grâce à la conversion automatique des paramètres
+    public function delete (Author $author, EntityManagerInterface $em) :Response //On récupère notre auteur grâce à la conversion automatique des paramètres
     {
-        $rep->remove($author); //on utilise remove pour supprimer un objet
+        $author->removeAllPosts($em);
+        $em->remove($author);
+        $em->flush();
         return $this->redirectToRoute('app_author_list'); //on redirige vers la route de notre liste
     }
 

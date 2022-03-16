@@ -17,16 +17,16 @@
     <body>
         {% include 'navbar.html.twig' %}
 {% endblock %}
-        <div>
+        <div class="container-fluid">
             {% block content %}
                 {% if content is defined %}
                     {{ content }}
                 {% endif %}
             {% endblock %}
+            {% include 'link.html.twig' %}
         </div>
 {% block footer %}
         {{ encore_entry_script_tags('app') }}
-        {% include 'link.html.twig' %}
     </body>
 </html>
 {% endblock %}

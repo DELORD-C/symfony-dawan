@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\AuthorRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -25,7 +26,7 @@ class Author
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Post::class, mappedBy="Author")
+     * @ORM\OneToMany(targetEntity=Post::class, mappedBy="author")
      */
     private $posts;
 
@@ -79,5 +80,12 @@ class Author
         }
 
         return $this;
+    }
+
+    public function removeAllPosts(EntityManagerInterface $em)
+    {
+        foreach($this->posts as $post) {
+            $em->remove($post);
+        }
     }
 }

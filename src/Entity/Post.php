@@ -33,6 +33,11 @@ class Post
      */
     private $author;
 
+    // on ajoute une fonction de constructeur qui va automatiquement compléter la date à la création d'un objet
+    function __construct() {
+        $this->createdAt = new \DateTimeImmutable();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

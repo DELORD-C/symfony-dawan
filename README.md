@@ -16,6 +16,15 @@
 
 ---
 
+## Liens des documentations
+
+- Symfony : https://symfony.com/doc/current/index.html
+- Twig : https://twig.symfony.com/doc/3.x/
+- Bootstrap : https://getbootstrap.com/docs/5.0/getting-started/introduction/
+- SQL : https://sql.sh
+
+---
+
 ## Commandes utiles
 - Lister les routes :
 ```shell
@@ -38,6 +47,11 @@ composer require [nom du paquet]
 - Retire un paquet :
 ```shell
 composer remove [nom du paquet]
+```
+
+- Valider les schémas des Entités :
+```shell
+php bin/console doctrine:schema:validate
 ```
 
 ---
