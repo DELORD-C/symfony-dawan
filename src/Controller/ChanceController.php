@@ -6,6 +6,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class ChanceController extends AbstractController
 {
@@ -29,10 +30,10 @@ class ChanceController extends AbstractController
     /**
      * @Route("/chance/jour")
      */
-    public function jour() : Response
+    public function jour(TranslatorInterface $translator) : Response
     {
         $jours = [
-            'Lundi',
+            $translator->trans('Lundi'),
             'Mardi',
             'Mercredi',
             'Jeudi',

@@ -1,0 +1,3 @@
+errors:
+  fill: Please fill all the fields
+  length: Your password must contain at least 4 characters

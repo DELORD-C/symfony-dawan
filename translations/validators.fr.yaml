@@ -1,0 +1,3 @@
+errors:
+  fill: Merci de compléter tous les champs
+  length: Votre mot de passe doit contenir au moins 4 caractères
