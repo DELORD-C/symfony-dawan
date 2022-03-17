@@ -12,7 +12,19 @@ class AuthorType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextareaType::class)
-            ->add('save', SubmitType::class, ['label' => 'Modifier']);
+            ->add('name', TextareaType::class, [
+                'attr' => [
+                    'placeholder' => 'Name',
+                ],
+                'row_attr' => [
+                    'class' => 'form-floating',
+                ],
+            ])
+            ->add('save', SubmitType::class, [
+                'label' => 'Modifier',
+                'attr' => [
+                    'class' => 'btn btn-primary'
+                ]
+            ]);
     }
 }
