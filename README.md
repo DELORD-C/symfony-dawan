@@ -120,3 +120,64 @@ php bin/console make:migration
 ```shell
 php bin/console doctrine:migrations:migrate
 ```
+
+## Ajouter Bootstrap 5
+
+1. Installer toutes les dépendances requises
+- bootstrap :
+```shell
+   npm install bootstrap
+```
+- sass & sass_loader (compiler les fichiers scss)
+```shell
+npm install sass sass-loader
+```
+- installer bootstrap js
+```shell
+npm install @popperjs/core --save-dev
+```
+
+2. Configurer webpack
+```js
+// Dans webpack.config.js
+// décommenter ou ajouter la ligne :
+.enableSassLoader()
+```
+
+3. Importer bootstrap css et bootstrap js dans notre projet
+```js
+//importer le css
+import "bootstrap/scss/bootstrap.scss";
+
+//importer le js
+require('bootstrap');
+```
+
+4. Inclure nos assets dans nos templates twig (cf : Ajouter les fichiers css & js de `encore` à la page)
+
+## Ajouter des medias (images, videos) à notre projet
+
+1) Lier les fichiers uns par uns dans app.js
+```js
+// Nous n'avons qu'à rajouter des import pour chaque fichier :
+// assets/app.js
+import image from './media/img/test.jpeg';
+// Le nom de la variable n'est utile qu'en js
+// Cet import va automatiquement créer une image test.[string aléatoire].jpeg dans notre dossier public
+```
+
+2) Copier plusieurs fichiers à la fois avec la fonction `copyFile()`
+```js
+// webpack.config.js
+// ajouter la fonction suivante à Encore
+.copyFiles({
+    from: './assets/media', //url dans le dossier assets
+    to: 'media/[path][name].[hash-8].[ext]', //url dans le dossier public
+    pattern: /\.(svg|png|jpg|jpeg|mp4)$/ //optionnel : on peut cibler avec une regex
+})
+```
+
+3) faire référence aux fichiers dans les templates TWIG
+```twig
+{{ asset('URL du fichier dans le dossier public (sans la string aléatoire)') }}
+```
