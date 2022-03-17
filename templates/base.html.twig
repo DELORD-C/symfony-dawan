@@ -15,8 +15,9 @@
         {% endblock %}
     </head>
     <body>
-{#        {% include 'header.html.twig' %}#}
-        {% include 'navbar.html.twig' %}
+        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            {% include 'navbar.html.twig' %}
+        {% endif %}
 {% endblock %}
         <div class="container-fluid">
             {% block content %}

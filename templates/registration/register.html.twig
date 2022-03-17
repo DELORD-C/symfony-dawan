@@ -1,17 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
-
 {% block content %}
-    <h1>Register</h1>
+    <h1 class="display-4 fw-normal text-center mb-5">Bienvenue sur Symfony</h1>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        <h2>Bonjour {{ app.user.email }}</h2>
+    {% else %}
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-2 mb-3 mt-3 text-center">
+                <div class="col">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Inscription</h4>
+                        </div>
+                        <div class="card-body">
+                            {{ form(registrationForm) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Connexion</h4>
+                        </div>
+                        <div class="card-body">
+                            {% if error %}
+                                <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                            {% endif %}
+                            <form action="{{ path('login') }}" method="post">
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                                <div class="form-floating">
+                                    <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control"/>
+                                    <label for="username" class="form-label required">Email</label>
+                                </div>
+
+                                <div class="form-floating">
+                                    <input type="password" id="password" name="_password" class="form-control"/>
+                                    <label for="password" class="form-label required">Mot de passe</label>
+                                </div>
+
+                                <input type="hidden" name="_target_path" value="/"/>
+
+                                <button  class="w-100 btn btn-lg btn-primary mt-3" type="submit">Connexion</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}
