@@ -49,7 +49,7 @@ class RegistrationController extends AbstractController
             'registrationForm' => $form,
             'error' =>  $authenticationUtils->getLastAuthenticationError(),
             'last_username' => $authenticationUtils->getLastUsername(),
-            'hi' => $greeter->sayHi()
+            'hi' => $greeter->sayHi('Kevin')
         ]);
     }
 }

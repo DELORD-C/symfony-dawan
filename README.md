@@ -181,3 +181,5 @@ import image from './media/img/test.jpeg';
 ```twig
 {{ asset('URL du fichier dans le dossier public (sans la string aléatoire)') }}
 ```
+
+## Versionning
