@@ -121,6 +121,8 @@ php bin/console make:migration
 php bin/console doctrine:migrations:migrate
 ```
 
+---
+
 ## Ajouter Bootstrap 5
 
 1. Installer toutes les dépendances requises
@@ -155,6 +157,8 @@ require('bootstrap');
 
 4. Inclure nos assets dans nos templates twig (cf : Ajouter les fichiers css & js de `encore` à la page)
 
+---
+
 ## Ajouter des medias (images, videos) à notre projet
 
 1) Lier les fichiers uns par uns dans app.js
@@ -182,4 +186,25 @@ import image from './media/img/test.jpeg';
 {{ asset('URL du fichier dans le dossier public (sans la string aléatoire)') }}
 ```
 
-## Versionning
+---
+
+## Versioning
+
+Les dossiers à ignorer sont normalement déjà spécifiés dans le `.gitignore` généré
+par la commande
+```shell
+symfony new [nom du projet] --webapp
+```
+Mais voici la liste :
+```
+node_modules/
+var/
+vendor/
+public/build/
+```
+
+Tout le reste des fichiers est à versionner (à l'exception du `.env` ou `.env`.local si
+vous venez à l'utiliser)
+
+Le fichier `.env.local` viens écraser les propriétés qu'il contient dans le `.env` il peut
+donc être utile si vous travaillez en équipe

@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 //ici on importe les composants qu'on utilise dans le controller
+use App\Service\Query;
+use App\Service\Sapin;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -49,5 +51,13 @@ class ChanceController extends AbstractController
                 'content' => "Jour de chance : " . $jours[array_rand($jours)]
             ] //2e paramètre (optionnel) : tableau associatif de variables que l'on souhaite passer au template
         );
+    }
+
+    /**
+     * @Route("/sapin/{height}")
+     */
+    public function sapin(Sapin $sapin, Query $query, int $height = 10) : Response
+    {
+        return new Response($sapin->default($height) . $query->getFirstUserEmailQB());
     }
 }
