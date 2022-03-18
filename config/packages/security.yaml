@@ -42,7 +42,8 @@ security:
     access_control:
         - { path: '^/$', roles: IS_AUTHENTICATED_ANONYMOUSLY  }
         - { path: '^/login$', roles: IS_AUTHENTICATED_ANONYMOUSLY  }
-        - { path: '/chance/jour', roles: ROLE_ADMIN }
+        - { path: '/admin', roles: [ROLE_ADMIN, ROLE_SUPER] }
+        - { path: '/toggle', roles: [ROLE_SUPER] }
         - { path: '^/', roles: ROLE_USER }
 
 when@test:

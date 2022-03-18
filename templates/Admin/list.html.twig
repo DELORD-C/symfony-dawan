@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Liste des utilisateurs</h1>
+    <ul>
+    {% for user in users %}
+        <li>
+            <p>{{ user.email }}</p>
+            {% if is_granted("ROLE_SUPER") %}
+                <a href="{{ path('app_admin_toggle', {user: user.id}) }}">
+                    {% if "ROLE_ADMIN" in user.roles %}
+                        Rétrograder
+                    {% else %}
+                        Promouvoir
+                    {% endif %}
+                </a>
+            {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

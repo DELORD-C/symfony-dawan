@@ -1,10 +1,12 @@
 general:
   homeTitle: Bienvenue sur Symfony
   welcome: Bienvenue
+  hi: Hey %name%, comment allez vous ?
+  guest: Inconnu
 form:
   title:
-    signIn: Inscription
-    signUp: Connexion
+    signIn: Connexion
+    signUp: Inscription
   labels:
     password: Mot de passe
     email: Email

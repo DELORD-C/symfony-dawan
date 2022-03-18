@@ -1,6 +1,8 @@
 general:
   homeTitle: Welcome to Symfony
   welcome: Hello
+  hi: Hey %name%, how're you ?
+  guest: Guest
 form:
   title:
     signIn: Sign In

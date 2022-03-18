@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Service\Greeter;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,7 +18,13 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/", name="app_register")
      */
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager, AuthenticationUtils $authenticationUtils): Response
+    public function register(
+        Request $request,
+        UserPasswordHasherInterface $userPasswordHasher,
+        EntityManagerInterface $entityManager,
+        AuthenticationUtils $authenticationUtils,
+        Greeter $greeter
+    ): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -41,7 +48,8 @@ class RegistrationController extends AbstractController
         return $this->renderForm('registration/register.html.twig', [
             'registrationForm' => $form,
             'error' =>  $authenticationUtils->getLastAuthenticationError(),
-            'last_username' => $authenticationUtils->getLastUsername()
+            'last_username' => $authenticationUtils->getLastUsername(),
+            'hi' => $greeter->sayHi()
         ]);
     }
 }
