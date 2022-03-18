@@ -9,4 +9,4 @@
 3. sur la page nouvellement créée, afficher une liste des utilisateurs
 4. ajouter un nouveau role ROLE_SUPER sur un utilisateur
 5. autoriser le role ROLE_SUPER à accéder à la liste des utilisateurs
-6. lorsqu'on est sur la page admin en étant connecté avec un ROLE_SUPER, chaque utilisateur de la liste 
+6. lorsqu'on est sur la page admin en étant connecté avec un ROLE_SUPER, chaque utilisateur doit avoir un bouton "Donner les droits administrateurs" et un bouton "Retirer les droits administrateurs" qui permettra d'ajouter ou de retirer le ROLE_ADMIN à l'utilisateur
