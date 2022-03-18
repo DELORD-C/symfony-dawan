@@ -58,6 +58,10 @@ class ChanceController extends AbstractController
      */
     public function sapin(Sapin $sapin, Query $query, int $height = 10) : Response
     {
-        return new Response($sapin->default($height) . $query->getFirstUserEmailQB());
+        $response = new Response($sapin->default($height) . $query->getFirstUserEmailQB());
+        $response->setPublic();
+        $response->setMaxAge(3600);
+        $response->headers->addCacheControlDirective('must-revalidate', true);
+        return $response;
     }
 }

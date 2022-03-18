@@ -26,10 +26,16 @@
 ---
 
 ## Commandes utiles
+- Lister les versions de php :
+```shell
+symfony local:php:list
+```
+
 - Lister les routes :
 ```shell
 php bin/console debug:router
 ```
+
 - Lancer le serveur symfony :
 ```shell
 symfony serve

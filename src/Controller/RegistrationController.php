@@ -45,11 +45,16 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('app_register');
         }
 
-        return $this->renderForm('registration/register.html.twig', [
-            'registrationForm' => $form,
+        $response = $this->render('registration/register.html.twig', [
+            'registrationForm' => $form->createView(),
             'error' =>  $authenticationUtils->getLastAuthenticationError(),
             'last_username' => $authenticationUtils->getLastUsername(),
             'hi' => $greeter->sayHi('Kevin')
         ]);
+        $response->setPublic();
+        $response->setMaxAge(3600);
+        $response->headers->addCacheControlDirective('must-revalidate', true);
+
+        return $response;
     }
 }
