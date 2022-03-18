@@ -1,13 +1,10 @@
 general:
   homeTitle: Welcome to Symfony
   welcome: Hello
-mail:
-  subjets:
-    contact: Contact
-    newUser: New User
 form:
   title:
     signIn: Sign In
     signUp: Sign Up
   labels:
     password: Password
+    email: Email

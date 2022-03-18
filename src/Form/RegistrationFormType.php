@@ -11,7 +11,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Contracts\Translation\TranslatableInterface;
 
 class RegistrationFormType extends AbstractType
 {
@@ -19,10 +18,10 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-                'label' => 'Email',
+                'label' => 'form.labels.email',
                 'attr' => [
                     'autocomplete' => 'new-password',
-                    'placeholder' => 'Email',
+                    'placeholder' => 'form.labels.email',
                 ],
                 'row_attr' => [
                     'class' => 'form-floating',
@@ -40,7 +39,7 @@ class RegistrationFormType extends AbstractType
                 ],
                 'constraints' => [
                     new NotBlank([
-                        'message' => "errors.fill",
+                        'message' => 'errors.fill',
                     ]),
                     new Length([
                         'min' => 4,

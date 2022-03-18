@@ -16,7 +16,6 @@
                         </div>
                         <div class="card-body">
                             {{ form(registrationForm) }}
-
                         </div>
                     </div>
                 </div>
@@ -31,7 +30,7 @@
 
                                 <div class="form-floating">
                                     <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control"/>
-                                    <label for="username" class="form-label required">Email</label>
+                                    <label for="username" class="form-label required">{{'form.labels.email'|trans}}</label>
                                 </div>
 
                                 <div class="form-floating">

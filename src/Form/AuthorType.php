@@ -13,6 +13,7 @@ class AuthorType extends AbstractType
     {
         $builder
             ->add('name', TextareaType::class, [
+                'label' => 'form.labels.email',
                 'attr' => [
                     'placeholder' => 'Name',
                 ],
